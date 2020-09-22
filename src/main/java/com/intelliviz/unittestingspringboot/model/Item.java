@@ -1,10 +1,21 @@
 package com.intelliviz.unittestingspringboot.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="item")
 public class Item {
+    @Id
     private int id;
     private String name;
     private int price;
     private int quantity;
+
+    @Transient
+    private int value;
+
+    protected Item() {
+    }
 
     public Item(int id, String name, int price, int quantity) {
         this.id = id;
@@ -43,6 +54,14 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     @Override
